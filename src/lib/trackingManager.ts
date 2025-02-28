@@ -1,16 +1,10 @@
 import analytics from "./analytics";
-import contactTracker from "./contactTracker";
-import fraudDetection from "./fraudDetection";
 
-// Lớp quản lý tất cả các hệ thống theo dõi
-export class TrackingManager {
+class TrackingManager {
   private static instance: TrackingManager;
   private isInitialized = false;
-  private apiEndpoint: string;
 
-  private constructor() {
-    this.apiEndpoint = import.meta.env.VITE_TRACKING_API || "/api/tracking";
-  }
+  private constructor() {}
 
   public static getInstance(): TrackingManager {
     if (!TrackingManager.instance) {
@@ -22,111 +16,147 @@ export class TrackingManager {
   public init(): void {
     if (this.isInitialized) return;
 
-    try {
-      // Khởi tạo analytics trước
-      analytics.init();
+    // Khởi tạo analytics
+    analytics.init();
 
-      // Đảm bảo rằng các hệ thống khác được khởi tạo sau analytics
-      setTimeout(() => {
-        try {
-          contactTracker.init();
-          fraudDetection.init();
-        } catch (error) {
-          console.error("Error initializing tracking systems:", error);
-        }
-      }, 100);
+    // Theo dõi các sự kiện trang web
+    this.trackPageViews();
+    this.trackClicks();
+    this.trackFormSubmissions();
 
-      // Thiết lập event listener cho sự kiện beforeunload
-      window.addEventListener("beforeunload", () => this.sendFinalData());
-
-      this.isInitialized = true;
-
-      // Gửi dữ liệu tổng hợp định kỳ
-      setInterval(() => this.sendAggregatedData(), 120000); // 2 phút
-    } catch (error) {
-      console.error("Error in TrackingManager.init():", error);
-    }
+    this.isInitialized = true;
   }
 
-  private sendFinalData(): void {
-    // Gửi dữ liệu cuối cùng trước khi người dùng rời trang
-    const finalData = {
-      sessionData: analytics.getSessionData(),
-      contactClicks: contactTracker.getContactClicks(),
-      formSubmissions: contactTracker.getFormSubmissions(),
-      fraudScore: fraudDetection.getLatestFraudScore(),
+  private trackPageViews(): void {
+    // Theo dõi lượt xem trang
+    analytics.trackEvent("page_view", {
       url: window.location.href,
-      timestamp: Date.now(),
-      finalEvent: true,
-    };
+      referrer: document.referrer,
+      title: document.title,
+    });
 
-    // Sử dụng sendBeacon để đảm bảo dữ liệu được gửi ngay cả khi trang đóng
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(this.apiEndpoint, JSON.stringify(finalData));
-    } else {
-      // Fallback nếu sendBeacon không được hỗ trợ
-      fetch(this.apiEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(finalData),
-        keepalive: true,
-      }).catch((error) => console.error("Error sending final data:", error));
-    }
-  }
-
-  private sendAggregatedData(): void {
-    const aggregatedData = {
-      sessionData: analytics.getSessionData(),
-      contactClicks: contactTracker.getContactClicks(),
-      formSubmissions: contactTracker.getFormSubmissions(),
-      fraudScore: fraudDetection.getLatestFraudScore(),
-      url: window.location.href,
-      timestamp: Date.now(),
-    };
-
-    fetch(this.apiEndpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(aggregatedData),
-      keepalive: true,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(() => {
-        // Xóa dữ liệu đã gửi
-        contactTracker.clearData();
-      })
-      .catch((error) => {
-        console.error("Error sending aggregated data:", error);
+    // Theo dõi thay đổi trang (cho SPA)
+    window.addEventListener("popstate", () => {
+      analytics.trackEvent("page_view", {
+        url: window.location.href,
+        referrer: document.referrer,
+        title: document.title,
       });
+    });
   }
 
-  // Public API
-  public getTrackingData(): any {
-    return {
-      analytics: analytics.getSessionData(),
-      contactClicks: contactTracker.getContactClicks(),
-      formSubmissions: contactTracker.getFormSubmissions(),
-      fraudDetection: {
-        score: fraudDetection.getLatestFraudScore(),
-        isFraudulent: fraudDetection.isFraudulent(),
-      },
-    };
+  private trackClicks(): void {
+    // Theo dõi các click vào liên kết và nút
+    document.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      const clickTarget = this.findClickableParent(target);
+
+      if (clickTarget) {
+        const isLink = clickTarget.tagName === "A";
+        const isButton =
+          clickTarget.tagName === "BUTTON" ||
+          (clickTarget.tagName === "INPUT" &&
+            (clickTarget as HTMLInputElement).type === "button") ||
+          (clickTarget as HTMLInputElement).type === "submit";
+
+        if (isLink || isButton) {
+          let eventData: any = {
+            element_type: clickTarget.tagName.toLowerCase(),
+            element_text: clickTarget.textContent?.trim() || "",
+            element_classes: clickTarget.className,
+          };
+
+          if (isLink) {
+            const link = clickTarget as HTMLAnchorElement;
+            eventData.href = link.href;
+            eventData.target = link.target;
+          }
+
+          analytics.trackEvent("click", eventData);
+        }
+      }
+    });
   }
 
-  public isFraudulent(): boolean {
-    return fraudDetection.isFraudulent();
+  private findClickableParent(element: HTMLElement | null): HTMLElement | null {
+    if (!element) return null;
+
+    // Kiểm tra nếu element hiện tại là clickable
+    if (
+      element.tagName === "A" ||
+      element.tagName === "BUTTON" ||
+      (element.tagName === "INPUT" &&
+        ((element as HTMLInputElement).type === "button" ||
+          (element as HTMLInputElement).type === "submit"))
+    ) {
+      return element;
+    }
+
+    // Kiểm tra các thuộc tính role
+    if (element.getAttribute("role") === "button") {
+      return element;
+    }
+
+    // Kiểm tra các sự kiện click
+    const onclick = element.getAttribute("onclick");
+    if (onclick) {
+      return element;
+    }
+
+    // Đệ quy kiểm tra parent
+    if (element.parentElement) {
+      return this.findClickableParent(element.parentElement);
+    }
+
+    return null;
+  }
+
+  private trackFormSubmissions(): void {
+    document.addEventListener("submit", (e) => {
+      const form = e.target as HTMLFormElement;
+      const formData: any = {
+        form_id: form.id || "unknown",
+        form_name: form.name || "unknown",
+        form_action: form.action,
+        form_method: form.method,
+        form_fields: [],
+      };
+
+      // Collect form fields data
+      const formElements = Array.from(form.elements) as HTMLElement[];
+      formElements.forEach((element) => {
+        if (
+          element.tagName === "INPUT" ||
+          element.tagName === "TEXTAREA" ||
+          element.tagName === "SELECT"
+        ) {
+          const input = element as
+            | HTMLInputElement
+            | HTMLTextAreaElement
+            | HTMLSelectElement;
+          const fieldName = input.name || input.id || "unnamed";
+          let fieldValue;
+
+          if (input.type === "password") {
+            fieldValue = "********"; // Don't track actual passwords
+          } else if (input.type === "checkbox" || input.type === "radio") {
+            fieldValue = (input as HTMLInputElement).checked;
+          } else {
+            fieldValue = input.value ? "filled" : "empty"; // Don't track actual values for privacy
+          }
+
+          formData.form_fields.push({
+            name: fieldName,
+            type: input.type || input.tagName.toLowerCase(),
+            value: fieldValue,
+          });
+        }
+      });
+
+      analytics.trackEvent("form_submit", formData);
+    });
   }
 }
 
-// Khởi tạo và xuất instance
 const trackingManager = TrackingManager.getInstance();
 export default trackingManager;

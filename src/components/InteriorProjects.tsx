@@ -42,14 +42,9 @@ export default function InteriorProjects() {
 
   useEffect(() => {
     const loadProjects = async () => {
-      try {
-        const data = await fetchProjects("interior");
-        setProjects(data);
-      } catch (error) {
-        console.error("Failed to load interior projects:", error);
-      } finally {
-        setLoading(false);
-      }
+      const data = await fetchProjects("interior");
+      setProjects(data);
+      setLoading(false);
     };
     loadProjects();
   }, []);
@@ -112,7 +107,7 @@ export default function InteriorProjects() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
         </div>

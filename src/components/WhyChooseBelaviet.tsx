@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -6,27 +6,10 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { X } from "lucide-react";
-import trackingManager from "@/lib/trackingManager";
 
 export default function WhyChooseBetaviet() {
   const [videoOpen, setVideoOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    area: "",
-  });
-  const [formErrors, setFormErrors] = useState({
-    name: "",
-    phone: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  // Khởi tạo tracking manager
-  useEffect(() => {
-    trackingManager.init();
-  }, []);
 
   const reasons = [
     {
@@ -71,96 +54,6 @@ export default function WhyChooseBetaviet() {
       description: "Hỗ trợ thủ tục pháp lý\ncấp phép xây dựng",
     },
   ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    // Xóa lỗi khi người dùng bắt đầu nhập
-    if (formErrors[name as keyof typeof formErrors]) {
-      setFormErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
-    }
-  };
-
-  const validateForm = () => {
-    let valid = true;
-    const newErrors = { name: "", phone: "" };
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Vui lòng nhập họ tên";
-      valid = false;
-    }
-
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Vui lòng nhập số điện thoại";
-      valid = false;
-    } else {
-      // Kiểm tra định dạng số điện thoại Việt Nam
-      const phoneRegex = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
-      if (!phoneRegex.test(formData.phone.replace(/\s/g, ""))) {
-        newErrors.phone = "Số điện thoại không hợp lệ";
-        valid = false;
-      }
-    }
-
-    setFormErrors(newErrors);
-    return valid;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!validateForm()) return;
-
-    setIsSubmitting(true);
-
-    try {
-      // Kiểm tra xem có dấu hiệu gian lận không
-      const isFraudulent = trackingManager.isFraudulent();
-
-      // Nếu có dấu hiệu gian lận, vẫn cho phép gửi nhưng đánh dấu
-      const formDataToSend = {
-        ...formData,
-        isFraudulent,
-        trackingData: trackingManager.getTrackingData(),
-        timestamp: new Date().toISOString(),
-        source: window.location.href,
-        referrer: document.referrer,
-        userAgent: navigator.userAgent,
-      };
-
-      // Gửi dữ liệu form đến API
-      // Trong môi trường thực tế, bạn sẽ gửi đến API thực của mình
-      console.log("Gửi dữ liệu form đặt lịch:", formDataToSend);
-
-      // Giả lập API call thành công
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // Đặt lại form và hiển thị thông báo thành công
-      setFormData({
-        name: "",
-        phone: "",
-        area: "",
-      });
-      setSubmitSuccess(true);
-
-      // Ẩn thông báo thành công sau 3 giây
-      setTimeout(() => {
-        setSubmitSuccess(false);
-        setRegisterOpen(false);
-      }, 3000);
-    } catch (error) {
-      console.error("Lỗi khi gửi form:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <div className="py-16 bg-white">
@@ -242,10 +135,7 @@ export default function WhyChooseBetaviet() {
         <div className="flex justify-center mt-8">
           <Dialog open={registerOpen} onOpenChange={setRegisterOpen}>
             <DialogTrigger asChild>
-              <button
-                className="px-6 py-3 border-2 border-[#B87B44] text-[#B87B44] rounded-md hover:bg-[#B87B44] hover:text-white transition-colors"
-                data-contact="consultation"
-              >
+              <button className="px-6 py-3 border-2 border-[#B87B44] text-[#B87B44] rounded-md hover:bg-[#B87B44] hover:text-white transition-colors">
                 Đăng ký tư vấn miễn phí
               </button>
             </DialogTrigger>
@@ -278,65 +168,31 @@ export default function WhyChooseBetaviet() {
                   ))}
                 </div>
 
-                {submitSuccess && (
-                  <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-md">
-                    Đặt lịch thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.
-                  </div>
-                )}
-
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Họ và tên"
-                      className={`w-full p-3 border rounded-md ${formErrors.name ? "border-red-500" : ""}`}
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-                    {formErrors.name && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {formErrors.name}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <input
-                      type="tel"
-                      placeholder="Số điện thoại"
-                      className={`w-full p-3 border rounded-md ${formErrors.phone ? "border-red-500" : ""}`}
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                    />
-                    {formErrors.phone && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {formErrors.phone}
-                      </p>
-                    )}
-                  </div>
-
+                <form className="space-y-4">
+                  <input
+                    type="text"
+                    placeholder="Họ và tên"
+                    className="w-full p-3 border rounded-md"
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Số điện thoại"
+                    className="w-full p-3 border rounded-md"
+                  />
                   <input
                     type="text"
                     placeholder="Diện tích"
                     className="w-full p-3 border rounded-md"
-                    name="area"
-                    value={formData.area}
-                    onChange={handleChange}
                   />
-
                   <p className="text-center text-gray-600 text-sm">
                     Hotline:{" "}
                     <span className="text-[#B87B44]">0915 010 800</span>
                   </p>
-
                   <button
                     type="submit"
                     className="w-full bg-[#B87B44] text-white py-3 rounded-md hover:bg-[#A66933] transition-colors"
-                    disabled={isSubmitting}
                   >
-                    {isSubmitting ? "ĐANG XỬ LÝ..." : "Đặt lịch"}
+                    Đặt lịch
                   </button>
                 </form>
               </div>

@@ -21,7 +21,93 @@ export default function VideoReview() {
           công.
         </p>
 
-        <div className="grid grid-cols-12 gap-6 mb-6">
+        {/* Mobile layout - stacked with large video on top */}
+        <div className="md:hidden space-y-4 mb-6">
+          {/* Large video on top */}
+          <div className="relative group cursor-pointer">
+            <a
+              href="https://www.youtube.com/watch?v=LIivC_O1iYo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <img
+                src="https://betaviet.vn/wp-content/uploads/2024/11/z5441835544001_b38b6291a3d0bfbc54245462b7ce8aa4.jpg"
+                alt="600M2 BIỆT THỰ LÔ GÓC GỖ QUÝ"
+                className="w-full object-cover rounded-lg"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg
+                    className="w-10 h-10 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          {/* Two smaller videos in a grid */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="relative group cursor-pointer">
+              <a
+                href="https://www.youtube.com/watch?v=LIivC_O1iYo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <img
+                  src="https://betaviet.vn/wp-content/uploads/2024/11/geleximco-chi-van-anh-550x380-1.jpg"
+                  alt="NỘI THẤT GỖ ÓC CHÓ"
+                  className="w-full aspect-video object-cover rounded-lg"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <svg
+                      className="w-6 h-6 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div className="relative group cursor-pointer">
+              <a
+                href="https://www.youtube.com/watch?v=LIivC_O1iYo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <img
+                  src="https://betaviet.vn/wp-content/uploads/2024/11/dot-nhap-biet-thu-vip-nhat-vinhomes-ocean-park-voi-noi-that-sieu-dat-do.jpg"
+                  alt="BIỆT THỰ VIP NHẤT VINHOMES OCEAN PARK"
+                  className="w-full aspect-video object-cover rounded-lg"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <svg
+                      className="w-6 h-6 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop layout */}
+        <div className="hidden md:grid grid-cols-12 gap-6 mb-6">
           {/* Left large video */}
           <div className="col-span-7 relative group cursor-pointer h-full">
             <a

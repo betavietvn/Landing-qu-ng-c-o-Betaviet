@@ -42,14 +42,9 @@ export default function ArchitectureProjects() {
 
   useEffect(() => {
     const loadProjects = async () => {
-      try {
-        const data = await fetchProjects("architecture");
-        setProjects(data);
-      } catch (error) {
-        console.error("Failed to load projects:", error);
-      } finally {
-        setLoading(false);
-      }
+      const data = await fetchProjects("architecture");
+      setProjects(data);
+      setLoading(false);
     };
     loadProjects();
   }, []);
@@ -112,7 +107,7 @@ export default function ArchitectureProjects() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
         </div>

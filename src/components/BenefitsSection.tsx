@@ -77,7 +77,7 @@ export default function BenefitsSection() {
           </div>
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
           {reasons.map((reason, index) => (
             <div key={index} className="bg-white p-4 rounded-lg shadow-lg">
               <img

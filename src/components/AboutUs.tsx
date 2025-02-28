@@ -1,12 +1,12 @@
 export default function AboutUs() {
   return (
-    <div className="py-16 bg-white">
+    <div className="py-12 md:py-16 bg-white mb-8 md:mb-0">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-[#B87B44] mb-12">
           CHÚNG TÔI LÀ AI
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start mb-8">
           {/* Left side - Company info */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold text-[#B87B44]">

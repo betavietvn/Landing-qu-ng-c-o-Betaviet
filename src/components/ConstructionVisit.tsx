@@ -18,24 +18,19 @@ export default function ConstructionVisit() {
 
   useEffect(() => {
     const loadProjects = async () => {
-      try {
-        const data = await fetchProjects("construction");
-        const constructionProjects = data.map((project) => ({
-          ...project,
-          progress: {
-            khoi_cong: true,
-            phan_tho: true,
-            thi_cong_noi_that: Math.random() > 0.5,
-            lap_dat_hoan_thien: Math.random() > 0.7,
-            hoan_thanh: false,
-          },
-        }));
-        setProjects(constructionProjects);
-      } catch (error) {
-        console.error("Failed to load construction projects:", error);
-      } finally {
-        setLoading(false);
-      }
+      const data = await fetchProjects("construction");
+      const constructionProjects = data.map((project) => ({
+        ...project,
+        progress: {
+          khoi_cong: true,
+          phan_tho: true,
+          thi_cong_noi_that: Math.random() > 0.5,
+          lap_dat_hoan_thien: Math.random() > 0.7,
+          hoan_thanh: false,
+        },
+      }));
+      setProjects(constructionProjects);
+      setLoading(false);
     };
     loadProjects();
   }, []);

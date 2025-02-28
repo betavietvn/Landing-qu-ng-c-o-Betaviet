@@ -2,10 +2,10 @@ import { Facebook, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#B87B44] text-white">
+    <footer className="bg-[#B87B44] text-white mt-16 md:mt-0">
       <div className="container mx-auto px-4 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div className="space-y-4">
             <img
@@ -82,7 +82,7 @@ export default function Footer() {
 
         {/* Social Links */}
         <div className="mt-8 pt-8 border-t border-white/20">
-          <div className="flex flex-wrap justify-between items-center gap-4">
+          <div className="flex flex-wrap justify-between items-center gap-4 pb-16 md:pb-0">
             <div className="text-sm">
               Copyright © Betaviet since 2009, Alright reserverd. Thương hiệu
               đã được đăng ký. © Ghi rõ nguồn "https://betaviet.vn" khi phát
