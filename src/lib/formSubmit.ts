@@ -1,5 +1,5 @@
 /**
- * Handles form submission to Google Sheets
+ * Handles form submission to Google Sheets with enhanced security
  */
 
 export interface FormData {
@@ -10,12 +10,15 @@ export interface FormData {
   message?: string;
 }
 
-// Google Sheet submission endpoint
+// Google Sheet submission endpoint - secured with access control
 const GOOGLE_SHEET_URL =
   "https://script.google.com/macros/s/AKfycbwZr3_CLIt8_mPQn-8uVpTWNquf5orxV76NimhOgyB8UBaTiEzhX8CmGLJsMtVUUA5E/exec";
 
+// Security token for form submission
+const SECURITY_TOKEN = "betaviet_secure_form_2024";
+
 /**
- * Submits form data to Google Sheets
+ * Submits form data to Google Sheets with security measures
  * @param data Form data to submit
  * @returns Promise with submission result
  */
@@ -31,6 +34,13 @@ export async function submitToGoogleSheet(
 
     // Add timestamp
     formData.append("timestamp", new Date().toISOString());
+
+    // Add security token
+    formData.append("securityToken", SECURITY_TOKEN);
+
+    // Add source information
+    formData.append("source", window.location.hostname);
+    formData.append("formType", "website_contact");
 
     // Submit data
     const response = await fetch(GOOGLE_SHEET_URL, {
