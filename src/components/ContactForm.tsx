@@ -6,9 +6,7 @@ export default function ContactForm() {
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold text-center mb-6">
-        ĐĂNG KÝ
-        <br />
-        NHẬN ƯU ĐÃI
+        Gặp trực tiếp kiến trúc sư thiết kế Nhà thầu thi công
       </h2>
 
       <form className="space-y-4">
@@ -17,7 +15,7 @@ export default function ContactForm() {
         <Input placeholder="Địa chỉ" />
         <Textarea placeholder="Nội dung cần tư vấn" className="min-h-[120px]" />
 
-        <Button className="w-full bg-orange-600 hover:bg-orange-700">
+        <Button className="w-full bg-[#bc7025] hover:bg-[#a65e1f]">
           BẤM GỬI ĐI
         </Button>
       </form>

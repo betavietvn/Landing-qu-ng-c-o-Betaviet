@@ -4,15 +4,15 @@ export default function HeroSection() {
   return (
     <div className="relative h-[600px] md:h-[600px] bg-[url('https://betaviet.vn/wp-content/uploads/2025/01/backgroup3.jpg')] bg-cover bg-center">
       <div className="absolute inset-0 bg-black/50">
-        <div className="container mx-auto px-4 py-20 text-white">
-          <div className="flex flex-col gap-6 max-w-2xl">
-            <div className="text-lg">
-              <p className="mb-3">
+        <div className="container mx-auto px-4 py-10 text-white">
+          <div className="flex flex-col gap-4 max-w-2xl pt-6 pb-8 mt-20">
+            <div className="text-base">
+              <p className="mb-2">
                 Bạn muốn sở hữu biệt thự đẳng cấp, sang trọng, chuẩn phong thủy
                 nhưng lại gặp quá nhiều vấn đề:
               </p>
 
-              <ul className="space-y-2 mb-4">
+              <ul className="space-y-1 mb-3">
                 <li className="flex items-start gap-2">
                   <span className="text-red-500 font-bold">❌</span>
                   <span>Chưa tìm được thiết kế ưng ý, đúng gu thẩm mỹ?</span>
@@ -40,12 +40,12 @@ export default function HeroSection() {
                 </li>
               </ul>
 
-              <p className="mb-3">
+              <p className="mb-2">
                 Nếu không có một đơn vị chuyên nghiệp đồng hành, bạn có thể phải
                 đối mặt với:
               </p>
 
-              <ul className="space-y-2 mb-4">
+              <ul className="space-y-1 mb-3">
                 <li className="flex items-start gap-2">
                   <span className="text-amber-500 font-bold">⚠</span>
                   <span>
