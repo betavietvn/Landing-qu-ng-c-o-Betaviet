@@ -18,7 +18,11 @@ export default function MobileContactBar() {
           href="tel:0915010800"
           className="flex flex-col items-center space-y-1"
         >
-          <img src="/whatsapp-icon.png" alt="Gọi ngay" className="w-8 h-8" />
+          <img
+            src="https://betaviet.vn/wp-content/uploads/2023/12/icon_call.png"
+            alt="Gọi ngay"
+            className="w-8 h-8"
+          />
           <span className="text-xs">Gọi ngay</span>
         </a>
 
@@ -26,7 +30,11 @@ export default function MobileContactBar() {
           href="https://zalo.me/1474744784995246140"
           className="flex flex-col items-center space-y-1"
         >
-          <img src="/zalo-icon.png" alt="Zalo" className="w-8 h-8" />
+          <img
+            src="https://betaviet.vn/wp-content/uploads/2023/12/icon_zalo.png"
+            alt="Zalo"
+            className="w-8 h-8"
+          />
           <span className="text-xs">Zalo</span>
         </a>
 
@@ -34,7 +42,11 @@ export default function MobileContactBar() {
           href="https://m.me/521739221200526"
           className="flex flex-col items-center space-y-1"
         >
-          <img src="/messenger-icon.png" alt="Messenger" className="w-8 h-8" />
+          <img
+            src="https://betaviet.vn/wp-content/uploads/2023/12/icon_messenger.png"
+            alt="Messenger"
+            className="w-8 h-8"
+          />
           <span className="text-xs">Messenger</span>
         </a>
 
