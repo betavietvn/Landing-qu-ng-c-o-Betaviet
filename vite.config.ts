@@ -12,10 +12,7 @@ if (process.env.TEMPO === "true") {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base:
-    process.env.NODE_ENV === "development"
-      ? "/"
-      : process.env.VITE_BASE_PATH || "/",
+  base: "/",
   optimizeDeps: {
     entries: ["src/main.tsx", "src/tempobook/**/*"],
   },
@@ -40,14 +37,5 @@ export default defineConfig({
     assetsDir: "assets",
     sourcemap: false,
     minify: true,
-    // Thay đổi từ module sang iife để tránh lỗi MIME type
-    rollupOptions: {
-      output: {
-        format: "iife",
-        manualChunks: {
-          vendor: ["react", "react-dom", "react-router-dom"],
-        },
-      },
-    },
   },
 });
