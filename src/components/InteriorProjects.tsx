@@ -241,8 +241,8 @@ export default function InteriorProjects() {
         </h2>
 
         <p className="text-center mb-8 max-w-3xl mx-auto">
-          10 phong cách thiết kế thịnh hành, Hàng chục nghìn công trình chất
-          lượng cao. Đánh giá sâu sắc từ kiến trúc sư, Giúp bạn có được nguồn
+          10 phong cách thiết kế thịnh hành. Hàng chục nghìn công trình chất
+          lượng cao. Đánh giá sâu sắc từ kiến trúc sư. Giúp bạn có được nguồn
           cảm hứng thiết kế ngôi nhà một cách nhanh chóng!
         </p>
 
