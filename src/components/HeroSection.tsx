@@ -6,12 +6,6 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/50">
         <div className="container mx-auto px-4 py-20 text-white">
           <div className="flex flex-col gap-6 max-w-2xl">
-            <img
-              src="https://betaviet.vn/wp-content/uploads/2025/01/silder-box-1-20240627133734-hmnz9.png"
-              alt="Xây nhà trọn gói"
-              className="w-full max-w-[500px]"
-            />
-
             <div className="text-lg">
               <p className="mb-3">
                 Bạn muốn sở hữu biệt thự đẳng cấp, sang trọng, chuẩn phong thủy
