@@ -11,55 +11,11 @@ export default function WhyChooseBetaviet() {
   const [videoOpen, setVideoOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
 
-  const reasons = [
-    {
-      text: "Miễn phí 100% thiết kế khi thi công trọn gói",
-      subtext: "",
-    },
-    {
-      text: "Giảm đến 30% lên tới 300 triệu đồ nội thất nhập khẩu",
-      subtext: "Sở hữu ngay sản phẩm chính hãng cao cấp",
-    },
-    {
-      text: "Miễn phí nhận mẫu thiết kế phù hợp và video thực tế",
-      subtext: "Hàng nghìn mẫu nhà và video phù hợp yêu cầu",
-    },
-    {
-      text: "Miễn phí nhận dự toán chi phí thi công",
-      subtext: "Đầy đủ hạng mục, vật liệu và trang thiết bị",
-    },
-    {
-      text: "Miễn phí lập hồ sơ cấp phép xây dựng",
-      subtext: "Giảm thiểu gánh nặng pháp lý cho gia chủ",
-    },
-  ];
-
-  const benefits = [
-    {
-      image:
-        "https://betaviet.vn/wp-content/uploads/2023/12/Uu-dai-cong-trinh.jpg",
-      title: "Miễn phí",
-      description: "Miễn phí 100% thiết kế\nKhi thi công trọn gói",
-    },
-    {
-      image:
-        "https://betaviet.vn/wp-content/uploads/2023/12/Tu-van-cong-trinh.jpg",
-      title: "Ưu đãi",
-      description: "Giảm tới 30% 300tr\nĐồ nội thất nhập khẩu",
-    },
-    {
-      image:
-        "https://betaviet.vn/wp-content/uploads/2023/12/Khao-sat-cong-trinh.jpg",
-      title: "Pháp lý",
-      description: "Hỗ trợ thủ tục pháp lý\ncấp phép xây dựng",
-    },
-  ];
-
   return (
     <div className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-[#B87B44] mb-4">
-          LÝ DO LỰA CHỌN XÂY NHÀ CHỌN GÓI BETAVIET
+          LÝ DO LỰA CHỌN BETAVIET
         </h2>
         <div className="flex justify-center gap-1 mb-12">
           {[1, 2, 3, 4, 5].map((star) => (
@@ -77,21 +33,53 @@ export default function WhyChooseBetaviet() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left Column - List */}
           <div className="space-y-6">
-            {reasons.map((reason, index) => (
-              <div key={index} className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-6 h-6 bg-[#B87B44] text-white flex items-center justify-center rounded-sm">
-                  {index + 1}
-                </div>
+            <div className="font-bold text-lg mb-4">
+              🏆 BETAVIET – ĐƠN VỊ THIẾT KẾ & THI CÔNG BIỆT THỰ TRỌN GÓI HÀNG
+              ĐẦU VIỆT NAM
+            </div>
+            <div className="mb-4">
+              Chúng tôi giúp bạn hiện thực hóa biệt thự mong muốn với dịch vụ
+              trọn gói từ A-Z, đảm bảo:
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-start gap-2">
+                <div className="text-green-500 font-bold">✅</div>
                 <div>
-                  <div className="text-lg">{reason.text}</div>
-                  {reason.subtext && (
-                    <div className="text-sm text-gray-600">
-                      {reason.subtext}
-                    </div>
-                  )}
+                  Thiết kế ĐỘC QUYỀN – Chuẩn phong thủy – Cá nhân hóa theo gu
+                  của gia chủ.
                 </div>
               </div>
-            ))}
+              <div className="flex items-start gap-2">
+                <div className="text-green-500 font-bold">✅</div>
+                <div>
+                  Thi công CHUẨN CHẤT LƯỢNG – Vật liệu cao cấp – Đảm bảo đúng
+                  tiến độ.
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <div className="text-green-500 font-bold">✅</div>
+                <div>
+                  Tối ưu chi phí, không phát sinh, bảo hành bảo trì tận tâm.
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <div className="text-green-500 font-bold">✅</div>
+                <div>
+                  Cảnh quan sân vườn, tiểu cảnh hài hòa, nâng tầm giá trị biệt
+                  thự.
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <div className="text-red-500 font-bold">🚀</div>
+                <div>
+                  Hơn 10000+ biệt thự đã được Betaviet kiến tạo trên toàn quốc
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <div className="text-red-500 font-bold">📞</div>
+                <div>Liên hệ ngay: 0915010800 để được tư vấn miễn phí!</div>
+              </div>
+            </div>
           </div>
 
           {/* Right Column - Video */}
@@ -99,7 +87,7 @@ export default function WhyChooseBetaviet() {
             <DialogTrigger asChild>
               <div className="relative group cursor-pointer">
                 <img
-                  src="https://img.youtube.com/vi/LIivC_O1iYo/maxresdefault.jpg"
+                  src="https://img.youtube.com/vi/g8eeWRfVeRA/maxresdefault.jpg"
                   alt="Video thumbnail"
                   className="w-full rounded-lg"
                 />
@@ -121,7 +109,7 @@ export default function WhyChooseBetaviet() {
                 <iframe
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/LIivC_O1iYo?autoplay=1"
+                  src="https://www.youtube.com/embed/g8eeWRfVeRA?autoplay=1"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -148,24 +136,6 @@ export default function WhyChooseBetaviet() {
                   <DialogClose className="rounded-full p-1 hover:bg-gray-100">
                     <X className="h-4 w-4" />
                   </DialogClose>
-                </div>
-
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="text-center">
-                      <img
-                        src={benefit.image}
-                        alt={benefit.title}
-                        className="w-full h-24 object-cover rounded-lg mb-2"
-                      />
-                      <h3 className="font-bold text-lg mb-1">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-sm text-gray-600 whitespace-pre-line">
-                        {benefit.description}
-                      </p>
-                    </div>
-                  ))}
                 </div>
 
                 <form className="space-y-4">
