@@ -8,7 +8,7 @@ import InteriorProjects from "./InteriorProjects";
 import ConstructionVisit from "./ConstructionVisit";
 import VideoReview from "./VideoReview";
 import RegisterSection from "./RegisterSection";
-import WhyChooseBetaviet from "./WhyChooseBelaviet";
+import WhyChooseBetaviet from "./WhyChooseBetaviet";
 import AboutUs from "./AboutUs";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
