@@ -123,89 +123,112 @@ export default function ArchitectureProjects() {
       title:
         "Thiết kế biệt thự tân cổ điển 2 tầng mái Mansard tại Bắc Ninh KT23371",
       code: "KT23371",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=1",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2024/07/kts-hoang-nghia-manh-2-200x200xc.jpg",
       link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/thiet-ke-biet-thu-tan-co-dien-2-tang-mai-mansard-tai-bac-ninh-kt23371/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/mau-thiet-ke-biet-thu-tropical-700m2-tai-bac-ninh-kt24604.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/09/mau-thiet-ke-biet-thu-hien-dai-luxury-700m2-tai-bac-ninh-kt24604-600x404xc.jpg",
       title: "Mẫu thiết kế biệt thự Tropical 700m2 tại Bắc Ninh KT24604",
       code: "KT24604",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=2",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2024/09/kts-nguyen-hoang-trung-2-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/mau-thiet-ke-biet-thu-hien-dai-luxury-700m2-tai-bac-ninh-kt24604-9/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/thiet-ke-biet-thu-tan-co-dien-mai-mansard-tai-dak-nong-kt200817b.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/11/thiet-ke-dinh-thu-tan-co-dien-mai-mansard-tai-dac-nong-kt2008117b-7-600x404xc.jpg",
       title: "Thiết kế biệt thự tân cổ điển mái Mansard tại Đắk Nông KT200817B",
       code: "KT200817B",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=3",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2024/07/nguyen-trong-thuy-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/thiet-ke-dinh-thu-tan-co-dien-mai-mansard-tai-dac-nong-kt2008117b/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/thiet-ke-dinh-thu-tan-co-dien-3-tang-800m2-tai-quang-ninh-kt18041.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/08/dai-dien-thiet-ke-biet-thu-tan-co-dien-3-tang-800m2-tai-quang-ninh-kt18041-600x404xc.jpg",
       title:
         "Thiết kế dinh thự tân cổ điển 3 tầng 800m2 tại Quảng Ninh KT18041",
       code: "KT18041",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=4",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2024/01/kts-nguyen-huu-minh-1-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/thiet-ke-biet-thu-tan-co-dien-3-tang-800m2-tai-quang-ninh-kt18041/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/mau-thiet-ke-biet-thu-tan-co-dien-3-tang-tai-ha-nam-kt24821.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/11/mau-thiet-ke-biet-thu-tan-co-dien-3-tang-tai-ha-nam-kt24821-8-600x404xc.jpg",
       title: "Mẫu thiết kế biệt thự tân cổ điển 3 tầng tại Hà Nam KT24821",
       code: "KT24821",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=5",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2024/07/nguyen-trong-thuy-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/mau-thiet-ke-biet-thu-tan-co-dien-3-tang-tai-ha-nam-kt24821/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/mau-biet-thu-phong-cach-tan-co-dien-3-tang-tai-ha-noi-kt2009134.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/11/mau-biet-thu-phong-cach-tan-co-dien-3-tang-tai-ha-noi-kt2009134-600x404xc.jpg",
       title: "Mẫu biệt thự phong cách tân cổ điển 3 tầng tại Hà Nội KT2009134",
       code: "KT2009134",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=6",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2024/04/kts-vu-hoang-hai-2-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/mau-biet-thu-phong-cach-tan-co-dien-3-tang-tai-ha-noi-kt2009134/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/thiet-ke-biet-thu-tan-co-dien-3-8m-mai-mansard-tai-bac-ninh-kt22059.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/08/dai-dien-thiet-ke-biet-thu-tan-co-dien-3-tang-mai-mansard-tai-bac-ninh-kt22059-600x404xc.jpg",
       title:
         "Thiết kế biệt thự tân cổ điển 3.8m mái mansard tại Bắc Ninh KT22059",
       code: "KT22059",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=7",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2023/12/kts-dao-anh-tu-ok-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/thiet-ke-biet-thu-tan-co-dien-3-tang-mai-mansard-tai-bac-ninh-kt22059/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/thiet-ke-biet-thu-lau-dai-3-tang-1000m2-tai-nam-dinh-kt23124.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/08/dai-dien-thiet-ke-biet-thu-lau-dai-3-tang-1000m2-tai-nam-dinh-kt23124-600x404xc.jpg",
       title: "Thiết kế biệt thự lâu đài 3 tầng 1000m2 tại Nam Định KT23124",
       code: "KT23124",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=8",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2023/12/kts-dao-anh-tu-ok-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/thiet-ke-biet-thu-lau-dai-3-tang-1000m2-tai-nam-dinh-kt23124/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/dinh-thu-tan-co-dien-2-mat-tien-mai-mansard-tai-thanh-hoa-kt23082.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/08/biet-thu-tan-co-dien-2-mat-tien-mai-mansard-tai-thanh-hoa-kt23082-ava-600x404xc.jpg",
       title:
         "Dinh thự tân cổ điển 2 mặt tiền mái Mansard tại Thanh Hóa KT23082",
       code: "KT23082",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=9",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2023/12/kts-dao-anh-tu-ok-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/biet-thu-tan-co-dien-2-mat-tien-mai-mansard-tai-thanh-hoa-kt23082/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/thiet-ke-biet-thu-ban-co-dien-6-tang-850m2-tai-nghe-an-kt22215.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/08/dai-dien-thiet-ke-biet-thu-ban-co-dien-6-tang-850m2-tai-nghe-an-kt22215-600x404xc.jpg",
       title: "Thiết kế biệt thự bán cổ điển 6 tầng 850m2 tại Nghệ An KT22215",
       code: "KT22215",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=10",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2024/01/kts-nguyen-huu-minh-1-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/thiet-ke-biet-thu-ban-co-dien-6-tang-850m2-tai-nghe-an-kt22215-22/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/mau-kien-truc-biet-thu-500m2-tan-co-dien-2-tang-tai-ha-noi-kt21110.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/08/dai-dien-mau-kien-truc-biet-thu-500m2-tan-co-dien-2-tang-tai-ha-noi-kt21110-600x404xc.jpg",
       title:
         "Mẫu kiến trúc biệt thự 500m2 tân cổ điển 2 tầng tại Hà Nội KT21110",
       code: "KT21110",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=11",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2023/12/kts-dao-anh-tu-ok-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/mau-kien-truc-biet-thu-500m2-tan-co-dien-2-tang-tai-ha-noi-kt21110/",
     },
     {
       image:
-        "https://betaviet.vn/wp-content/uploads/2024/01/thiet-ke-biet-thu-lau-dai-kieu-phap-3-tang-tai-thanh-hoa-kt19099.jpg",
+        "https://betaviet.vn/wp-content/uploads/2024/09/dai-dien-thiet-ke-biet-thu-lau-dai-kieu-phap-3-tang-tai-thanh-hoa-kt19099-600x404xc.jpg",
       title: "Thiết kế biệt thự lâu đài kiểu pháp 3 tầng tại Thanh Hóa KT19099",
       code: "KT19099",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=12",
+      avatar:
+        "https://betaviet.vn/wp-content/uploads/2024/04/kts-vu-hoang-hai-2-200x200xc.jpg",
+      link: "https://betaviet.vn/thiet-ke-thi-cong-kien-truc/thiet-ke-biet-thu-lau-dai-kieu-phap-3-tang-tai-thanh-hoa-kt19099/",
     },
   ];
 
