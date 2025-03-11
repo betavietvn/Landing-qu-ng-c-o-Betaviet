@@ -1,6 +1,7 @@
 export default function RegisterSection() {
   return (
     <div
+      id="register-section"
       className="min-h-[900px] md:min-h-[600px] bg-cover bg-center relative py-12 md:py-0"
       style={{
         backgroundImage:

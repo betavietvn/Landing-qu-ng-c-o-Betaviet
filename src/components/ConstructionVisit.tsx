@@ -150,7 +150,7 @@ export default function ConstructionVisit() {
   }
 
   return (
-    <div className="py-16 bg-white">
+    <div id="construction-visit" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-[#B87B44] mb-4">
           THĂM CÔNG TRÌNH

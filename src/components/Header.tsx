@@ -6,14 +6,14 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const menuItems = [
-    { label: "TRANG CHỦ", href: "https://betaviet.vn/" },
+    { label: "TRANG CHỦ", href: "/" },
     { label: "KHUYẾN MÃI", href: "https://betaviet.vn/vlanding-mau-1/" },
-    { label: "DỰ ÁN KIẾN TRÚC", href: "#" },
-    { label: "DỰ ÁN NỘI THẤT", href: "#" },
-    { label: "THẨM CÔNG TRÌNH", href: "#" },
-    { label: "VIDEO REVIEW", href: "#" },
-    { label: "QUY TRÌNH", href: "#" },
-    { label: "LIÊN HỆ", href: "#" },
+    { label: "DỰ ÁN KIẾN TRÚC", href: "#architecture-projects" },
+    { label: "DỰ ÁN NỘI THẤT", href: "#interior-projects" },
+    { label: "THĂM CÔNG TRÌNH", href: "#construction-visit" },
+    { label: "VIDEO REVIEW", href: "#video-review" },
+    { label: "QUY TRÌNH", href: "#process-flow" },
+    { label: "LIÊN HỆ", href: "#register-section" },
   ];
 
   const toggleMobileMenu = () => {
@@ -38,6 +38,17 @@ export default function Header() {
                 key={index}
                 href={item.href}
                 className="text-gray-700 hover:text-[#B87B44] font-medium text-sm"
+                onClick={(e) => {
+                  if (item.href.startsWith("#")) {
+                    e.preventDefault();
+                    const element = document.getElementById(
+                      item.href.substring(1),
+                    );
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }
+                }}
               >
                 {item.label}
               </a>
@@ -77,7 +88,17 @@ export default function Header() {
                   key={index}
                   href={item.href}
                   className="text-gray-700 hover:text-[#B87B44] font-medium text-sm py-2 border-b border-gray-100"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (item.href.startsWith("#")) {
+                      const element = document.getElementById(
+                        item.href.substring(1),
+                      );
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }
+                  }}
                 >
                   {item.label}
                 </a>

@@ -236,7 +236,7 @@ export default function ArchitectureProjects() {
   ];
 
   return (
-    <div className="py-16 bg-[#f8f8f8]">
+    <div id="architecture-projects" className="py-16 bg-[#f8f8f8]">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-[#B87B44] mb-4">
           DỰ ÁN THIẾT KẾ KIẾN TRÚC

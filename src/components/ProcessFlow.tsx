@@ -20,7 +20,7 @@ export default function ProcessFlow() {
   ];
 
   return (
-    <div className="py-16 bg-[#B87B44] text-white">
+    <div id="process-flow" className="py-16 bg-[#B87B44] text-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">
           QUY TRÌNH HỢP TÁC

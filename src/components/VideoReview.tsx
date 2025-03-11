@@ -80,7 +80,7 @@ export default function VideoReview() {
   ];
 
   return (
-    <div className="py-16 bg-white">
+    <div id="video-review" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-[#B87B44] mb-4">
           VIDEO Review Công trình
