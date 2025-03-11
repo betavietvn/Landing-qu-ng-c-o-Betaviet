@@ -104,7 +104,7 @@ export default function Footer() {
                 className="hover:text-white/80"
               >
                 <img
-                  src="/zalo-icon.png"
+                  src="https://betaviet.vn/wp-content/uploads/2023/12/icon_call.png"
                   alt="Zalo"
                   className="w-6 h-6 brightness-0 invert"
                 />
@@ -116,7 +116,7 @@ export default function Footer() {
                 className="hover:text-white/80"
               >
                 <img
-                  src="/whatsapp-icon.png"
+                  src="https://betaviet.vn/wp-content/uploads/2023/12/icon_call.png"
                   alt="WhatsApp"
                   className="w-6 h-6 brightness-0 invert"
                 />
