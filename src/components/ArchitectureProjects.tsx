@@ -247,18 +247,29 @@ export default function ArchitectureProjects() {
           thiết kế ngôi nhà một cách nhanh chóng!
         </p>
 
-        {/* Categories */}
-        <div className="grid grid-cols-5 gap-4 mb-12">
+        {/* Categories - hidden on mobile */}
+        <div className="hidden md:grid grid-cols-5 gap-4 mb-12">
           {categories.map((category, index) => (
             <CategoryCard key={index} {...category} />
           ))}
         </div>
 
-        {/* Projects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Projects - grid on desktop, slider on mobile */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {displayProjects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
+        </div>
+
+        {/* Mobile slider */}
+        <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4 mb-4">
+          <div className="flex space-x-4 w-max">
+            {displayProjects.map((project, index) => (
+              <div key={index} className="w-[280px] flex-shrink-0">
+                <ProjectCard {...project} />
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="flex justify-center mt-8">
