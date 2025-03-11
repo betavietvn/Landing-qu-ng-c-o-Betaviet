@@ -1,6 +1,84 @@
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+
+interface VideoProps {
+  url: string;
+  thumbnail: string;
+  title?: string;
+}
+
+function VideoThumbnail({ url, thumbnail, title }: VideoProps) {
+  const videoId = url.split("v=")[1];
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <div className="relative group cursor-pointer">
+          <img
+            src={thumbnail}
+            alt={title || "Video thumbnail"}
+            className="w-full aspect-video object-cover rounded-lg"
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg
+                className="w-8 h-8 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </DialogTrigger>
+      <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black">
+        <div className="aspect-video">
+          <iframe
+            width="100%"
+            height="100%"
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
 
 export default function VideoReview() {
+  const mainVideo = {
+    url: "https://www.youtube.com/watch?v=v-wEcCakMLE",
+    thumbnail: "https://img.youtube.com/vi/v-wEcCakMLE/maxresdefault.jpg",
+    title: "600M2 BIỆT THỰ LÔ GÓC GỖ QUÝ",
+  };
+
+  const videos = [
+    {
+      url: "https://www.youtube.com/watch?v=WBU4pUgqmYA",
+      thumbnail: "https://img.youtube.com/vi/WBU4pUgqmYA/0.jpg",
+      title: "NỘI THẤT GỖ ÓC CHÓ",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=sGZXezQYHwI",
+      thumbnail: "https://img.youtube.com/vi/sGZXezQYHwI/0.jpg",
+      title: "BIỆT THỰ VIP NHẤT VINHOMES OCEAN PARK",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=DTnKEsZMYE0",
+      thumbnail: "https://img.youtube.com/vi/DTnKEsZMYE0/0.jpg",
+      title: "THI CÔNG NHÀ PHỐ 7 TẦNG TÂN CỔ ĐIỂN",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=LIivC_O1iYo",
+      thumbnail: "https://img.youtube.com/vi/LIivC_O1iYo/0.jpg",
+      title: "TRỌN GÓI SIÊU DINH THỰ 1400M2",
+    },
+  ];
+
   return (
     <div className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -8,185 +86,49 @@ export default function VideoReview() {
           VIDEO Review Công trình
         </h2>
 
-        <p className="text-center mb-12 max-w-3xl mx-auto">
-          Những <span className="font-bold">dự án thi công thực tế</span> được{" "}
-          <span className="font-bold">quay và ghi hình trực tiếp</span> khi hoàn
-          thành và đưa vào sử dụng.
-          <br />
-          Đây sẽ là những <span className="font-bold">
-            minh chứng rõ nét
-          </span>{" "}
-          để quý khách hàng cảm nhận về công trình do{" "}
-          <span className="font-bold">Betaviet Group</span> thiết kế và thi
-          công.
-        </p>
-
-        {/* Mobile layout - stacked with large video on top */}
-        <div className="md:hidden space-y-4 mb-6">
-          {/* Large video on top */}
-          <div className="relative group cursor-pointer">
-            <a
-              href="https://www.youtube.com/watch?v=LIivC_O1iYo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <img
-                src="https://betaviet.vn/wp-content/uploads/2024/11/z5441835544001_b38b6291a3d0bfbc54245462b7ce8aa4.jpg"
-                alt="600M2 BIỆT THỰ LÔ GÓC GỖ QUÝ"
-                className="w-full object-cover rounded-lg"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <svg
-                    className="w-10 h-10 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          {/* Two smaller videos in a grid */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="relative group cursor-pointer">
-              <a
-                href="https://www.youtube.com/watch?v=LIivC_O1iYo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <img
-                  src="https://betaviet.vn/wp-content/uploads/2024/11/geleximco-chi-van-anh-550x380-1.jpg"
-                  alt="NỘI THẤT GỖ ÓC CHÓ"
-                  className="w-full aspect-video object-cover rounded-lg"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div className="relative group cursor-pointer">
-              <a
-                href="https://www.youtube.com/watch?v=LIivC_O1iYo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <img
-                  src="https://betaviet.vn/wp-content/uploads/2024/11/dot-nhap-biet-thu-vip-nhat-vinhomes-ocean-park-voi-noi-that-sieu-dat-do.jpg"
-                  alt="BIỆT THỰ VIP NHẤT VINHOMES OCEAN PARK"
-                  className="w-full aspect-video object-cover rounded-lg"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
+        <div className="text-center mb-8 max-w-3xl mx-auto">
+          <p>
+            Những <strong>dự án thi công thực tế</strong> được{" "}
+            <strong>quay và ghi hình trực tiếp</strong> khi hoàn thành và đưa
+            vào sử dụng.
+          </p>
+          <p>
+            Đây sẽ là những <strong>minh chứng rõ nét</strong> để quý khách hàng
+            cảm nhận về công trình do <strong>Betaviet Group</strong> thiết kế
+            và thi công.
+          </p>
         </div>
 
         {/* Desktop layout */}
-        <div className="hidden md:grid grid-cols-12 gap-6 mb-6">
+        <div className="hidden md:flex flex-wrap mb-8">
           {/* Left large video */}
-          <div className="col-span-7 relative group cursor-pointer h-full">
-            <a
-              href="https://www.youtube.com/watch?v=LIivC_O1iYo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block h-full"
-            >
-              <img
-                src="https://betaviet.vn/wp-content/uploads/2024/11/z5441835544001_b38b6291a3d0bfbc54245462b7ce8aa4.jpg"
-                alt="600M2 BIỆT THỰ LÔ GÓC GỖ QUÝ"
-                className="w-full h-full object-cover rounded-lg"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <svg
-                    className="w-10 h-10 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-            </a>
+          <div className="w-1/2 pr-3">
+            <VideoThumbnail {...mainVideo} />
           </div>
 
-          {/* Right column with two videos */}
-          <div className="col-span-5 flex flex-col justify-between space-y-6">
-            <div className="relative group cursor-pointer h-[calc(50%-12px)]">
-              <a
-                href="https://www.youtube.com/watch?v=LIivC_O1iYo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block h-full"
-              >
-                <img
-                  src="https://betaviet.vn/wp-content/uploads/2024/11/geleximco-chi-van-anh-550x380-1.jpg"
-                  alt="NỘI THẤT GỖ ÓC CHÓ"
-                  className="w-full h-full object-cover rounded-lg"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg
-                      className="w-7 h-7 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            </div>
+          {/* Right grid with smaller videos */}
+          <div className="w-1/2 grid grid-cols-2 gap-3">
+            {videos.map((video, index) => (
+              <div key={index}>
+                <VideoThumbnail {...video} />
+              </div>
+            ))}
+          </div>
+        </div>
 
-            <div className="relative group cursor-pointer h-[calc(50%-12px)]">
-              <a
-                href="https://www.youtube.com/watch?v=LIivC_O1iYo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block h-full"
-              >
-                <img
-                  src="https://betaviet.vn/wp-content/uploads/2024/11/dot-nhap-biet-thu-vip-nhat-vinhomes-ocean-park-voi-noi-that-sieu-dat-do.jpg"
-                  alt="BIỆT THỰ VIP NHẤT VINHOMES OCEAN PARK"
-                  className="w-full h-full object-cover rounded-lg"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg
-                      className="w-7 h-7 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
+        {/* Mobile layout */}
+        <div className="md:hidden mb-6">
+          {/* Horizontal scrollable videos including main video */}
+          <div className="overflow-x-auto pb-4 -mx-4 px-4">
+            <div className="flex space-x-4 w-max">
+              <div className="w-[280px] flex-shrink-0">
+                <VideoThumbnail {...mainVideo} />
+              </div>
+              {videos.map((video, index) => (
+                <div key={index} className="w-[280px] flex-shrink-0">
+                  <VideoThumbnail {...video} />
                 </div>
-              </a>
+              ))}
             </div>
           </div>
         </div>
@@ -201,7 +143,7 @@ export default function VideoReview() {
               variant="outline"
               className="border-[#B87B44] text-[#B87B44] hover:bg-[#B87B44] hover:text-white"
             >
-              Xem thêm Video
+              Xem thêm các Video
             </Button>
           </a>
         </div>
