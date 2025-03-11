@@ -38,14 +38,17 @@ export default function MobileContactBar() {
           <span className="text-xs">Messenger</span>
         </a>
 
-        <a href="#" className="flex flex-col items-center space-y-1">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="flex flex-col items-center space-y-1"
+        >
           <img
             src="https://betaviet.vn/wp-content/uploads/2023/12/icon_form.png"
             alt="Tư vấn"
             className="w-8 h-8"
           />
           <span className="text-xs">Tư vấn</span>
-        </a>
+        </button>
       </div>
     </div>
   );
