@@ -32,6 +32,16 @@ export default function RegisterSection() {
     setIsSubmitting(true);
     setSubmitMessage({ show: false, success: false, text: "" });
 
+    // Push to dataLayer for GTM tracking
+    if (window && (window as any).dataLayer) {
+      const phoneFormatted = "+84" + data.phone.replace(/^(?!00[^0])0/, "");
+      (window as any).phoneCF7EC = phoneFormatted;
+      (window as any).dataLayer.push({
+        event: "ContactFormSubmit",
+        formPhone: phoneFormatted,
+      });
+    }
+
     try {
       const result = await submitToGoogleSheet({
         name: data.name,

@@ -9,7 +9,11 @@ TempoDevtools.init();
 
 // Khởi tạo hệ thống theo dõi
 import trackingManager from "./lib/trackingManager";
+import { initGTMFormTracking } from "./lib/gtmFormTracking";
 trackingManager.init();
+
+// Khởi tạo theo dõi form cho Google Tag Manager
+initGTMFormTracking();
 
 const basename = import.meta.env.BASE_URL;
 
