@@ -2,6 +2,7 @@ import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
+import { submitToGoogleSheet } from "@/lib/formSubmit";
 
 interface ConsultationFormProps {
   trigger: React.ReactNode;
@@ -9,12 +10,64 @@ interface ConsultationFormProps {
 
 export default function ConsultationForm({ trigger }: ConsultationFormProps) {
   const [open, setOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState({
+    show: false,
+    success: false,
+    text: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would handle the form submission
-    // For now, just close the dialog
-    setOpen(false);
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name") as string,
+      phone: formData.get("phone") as string,
+      area: formData.get("area") as string,
+    };
+
+    if (!data.name || !data.phone) {
+      setSubmitMessage({
+        show: true,
+        success: false,
+        text: "Vui lòng điền đầy đủ họ tên và số điện thoại",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage({ show: false, success: false, text: "" });
+
+    try {
+      const result = await submitToGoogleSheet({
+        name: data.name,
+        phone: data.phone,
+        area: data.area,
+      });
+
+      setSubmitMessage({
+        show: true,
+        success: result.success,
+        text: result.message,
+      });
+
+      if (result.success) {
+        form.reset();
+        setTimeout(() => {
+          setOpen(false);
+          setSubmitMessage({ show: false, success: false, text: "" });
+        }, 2000);
+      }
+    } catch (error) {
+      setSubmitMessage({
+        show: true,
+        success: false,
+        text: "Có lỗi xảy ra khi gửi thông tin",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -34,12 +87,13 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm font-medium mb-1">
                 Họ và tên
               </label>
               <input
+                name="name"
                 type="text"
                 placeholder="Nhập họ và tên"
                 className="w-full p-3 border rounded-md"
@@ -52,6 +106,7 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
                 Số điện thoại
               </label>
               <input
+                name="phone"
                 type="tel"
                 placeholder="Số điện thoại"
                 className="w-full p-3 border rounded-md"
@@ -64,11 +119,20 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
                 Diện tích
               </label>
               <input
+                name="area"
                 type="text"
                 placeholder="Diện tích"
                 className="w-full p-3 border rounded-md"
               />
             </div>
+
+            {submitMessage.show && (
+              <div
+                className={`p-3 rounded-md ${submitMessage.success ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
+              >
+                {submitMessage.text}
+              </div>
+            )}
 
             <div className="text-center text-sm text-gray-600 mt-2">
               Hotline:{" "}
@@ -78,8 +142,9 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
             <Button
               type="submit"
               className="w-full bg-[#B87B44] hover:bg-[#A66933] text-white rounded-md"
+              disabled={isSubmitting}
             >
-              Đặt lịch
+              {isSubmitting ? "ĐANG GỬI..." : "Đặt lịch"}
             </Button>
           </form>
         </div>

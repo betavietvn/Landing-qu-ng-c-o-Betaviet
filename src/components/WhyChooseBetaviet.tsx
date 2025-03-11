@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { submitToGoogleSheet } from "@/lib/formSubmit";
 import {
   Dialog,
   DialogContent,
@@ -10,6 +11,65 @@ import { X } from "lucide-react";
 export default function WhyChooseBetaviet() {
   const [videoOpen, setVideoOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState({
+    show: false,
+    success: false,
+    text: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name") as string,
+      phone: formData.get("phone") as string,
+      area: formData.get("area") as string,
+    };
+
+    if (!data.name || !data.phone) {
+      setSubmitMessage({
+        show: true,
+        success: false,
+        text: "Vui lòng điền đầy đủ họ tên và số điện thoại",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage({ show: false, success: false, text: "" });
+
+    try {
+      const result = await submitToGoogleSheet({
+        name: data.name,
+        phone: data.phone,
+        area: data.area,
+      });
+
+      setSubmitMessage({
+        show: true,
+        success: result.success,
+        text: result.message,
+      });
+
+      if (result.success) {
+        form.reset();
+        setTimeout(() => {
+          setRegisterOpen(false);
+          setSubmitMessage({ show: false, success: false, text: "" });
+        }, 2000);
+      }
+    } catch (error) {
+      setSubmitMessage({
+        show: true,
+        success: false,
+        text: "Có lỗi xảy ra khi gửi thông tin",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="py-16 bg-white">
@@ -138,22 +198,36 @@ export default function WhyChooseBetaviet() {
                   </DialogClose>
                 </div>
 
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   <input
+                    name="name"
                     type="text"
                     placeholder="Họ và tên"
                     className="w-full p-3 border rounded-md"
+                    required
                   />
                   <input
+                    name="phone"
                     type="tel"
                     placeholder="Số điện thoại"
                     className="w-full p-3 border rounded-md"
+                    required
                   />
                   <input
+                    name="area"
                     type="text"
                     placeholder="Diện tích"
                     className="w-full p-3 border rounded-md"
                   />
+
+                  {submitMessage.show && (
+                    <div
+                      className={`p-3 rounded-md ${submitMessage.success ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
+                    >
+                      {submitMessage.text}
+                    </div>
+                  )}
+
                   <p className="text-center text-gray-600 text-sm">
                     Hotline:{" "}
                     <span className="text-[#B87B44]">0915 010 800</span>
@@ -161,8 +235,9 @@ export default function WhyChooseBetaviet() {
                   <button
                     type="submit"
                     className="w-full bg-[#B87B44] text-white py-3 rounded-md hover:bg-[#A66933] transition-colors"
+                    disabled={isSubmitting}
                   >
-                    Đặt lịch
+                    {isSubmitting ? "ĐANG GỬI..." : "Đặt lịch"}
                   </button>
                 </form>
               </div>

@@ -12,6 +12,7 @@ import WhyChooseBetaviet from "./WhyChooseBetaviet";
 import AboutUs from "./AboutUs";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Toaster } from "@/components/ui/toaster";
 import { X } from "lucide-react";
 
 function Home() {
@@ -58,6 +59,9 @@ function Home() {
           <ContactForm />
         </DialogContent>
       </Dialog>
+      <div className="hidden">
+        <Toaster />
+      </div>
 
       {/* Main Content in requested order */}
       <WhyChooseBetaviet />

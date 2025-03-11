@@ -1,4 +1,65 @@
+import { submitToGoogleSheet } from "@/lib/formSubmit";
+import { useState } from "react";
+
 export default function RegisterSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState({
+    show: false,
+    success: false,
+    text: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name") as string,
+      phone: formData.get("phone") as string,
+      address: formData.get("address") as string,
+      message: formData.get("message") as string,
+    };
+
+    if (!data.name || !data.phone) {
+      setSubmitMessage({
+        show: true,
+        success: false,
+        text: "Vui lòng điền đầy đủ họ tên và số điện thoại",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage({ show: false, success: false, text: "" });
+
+    try {
+      const result = await submitToGoogleSheet({
+        name: data.name,
+        phone: data.phone,
+        address: data.address,
+        message: data.message,
+      });
+
+      setSubmitMessage({
+        show: true,
+        success: result.success,
+        text: result.message,
+      });
+
+      if (result.success) {
+        form.reset();
+      }
+    } catch (error) {
+      setSubmitMessage({
+        show: true,
+        success: false,
+        text: "Có lỗi xảy ra khi gửi thông tin",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div
       id="register-section"
@@ -56,28 +117,47 @@ export default function RegisterSection() {
               <br />
               NHẬN ƯU ĐÃI
             </h2>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <input
+                name="name"
                 type="text"
                 placeholder="Họ & Tên*"
                 className="w-full p-3 border rounded-md"
+                required
               />
               <input
+                name="phone"
                 type="tel"
                 placeholder="Số điện thoại*"
                 className="w-full p-3 border rounded-md"
+                required
               />
               <input
+                name="address"
                 type="text"
                 placeholder="Địa chỉ"
                 className="w-full p-3 border rounded-md"
               />
               <textarea
+                name="message"
                 placeholder="Nội dung cần tư vấn"
                 className="w-full p-3 border rounded-md min-h-[120px]"
               ></textarea>
-              <button className="w-full bg-[#B87B44] text-white py-3 rounded-md hover:bg-[#A66933] transition-colors font-bold">
-                BẤM GỬI ĐI
+
+              {submitMessage.show && (
+                <div
+                  className={`p-3 rounded-md ${submitMessage.success ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
+                >
+                  {submitMessage.text}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className="w-full bg-[#B87B44] text-white py-3 rounded-md hover:bg-[#A66933] transition-colors font-bold"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "ĐANG GỬI..." : "BẤM GỬI ĐI"}
               </button>
             </form>
           </div>
