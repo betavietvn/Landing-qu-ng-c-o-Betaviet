@@ -40,8 +40,10 @@ export default defineConfig({
     assetsDir: "assets",
     sourcemap: false,
     minify: true,
+    // Thay đổi từ module sang iife để tránh lỗi MIME type
     rollupOptions: {
       output: {
+        format: "iife",
         manualChunks: {
           vendor: ["react", "react-dom", "react-router-dom"],
         },
