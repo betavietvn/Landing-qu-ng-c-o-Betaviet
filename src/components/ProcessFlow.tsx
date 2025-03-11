@@ -26,7 +26,8 @@ export default function ProcessFlow() {
           QUY TRÌNH HỢP TÁC
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8">
+        {/* Desktop view */}
+        <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-7 gap-8">
           {steps.map((step, index) => (
             <div
               key={index}
@@ -39,6 +40,24 @@ export default function ProcessFlow() {
               <div className="text-sm">{step.text}</div>
             </div>
           ))}
+        </div>
+
+        {/* Mobile slider */}
+        <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4">
+          <div className="flex space-x-8 w-max">
+            {steps.map((step, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center text-center gap-4 w-[140px] flex-shrink-0"
+              >
+                <div className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center mb-2">
+                  <step.icon className="w-8 h-8" />
+                </div>
+                <div className="text-2xl font-bold">{step.number}</div>
+                <div className="text-sm">{step.text}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

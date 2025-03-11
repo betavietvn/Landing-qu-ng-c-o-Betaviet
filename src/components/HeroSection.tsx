@@ -5,8 +5,8 @@ export default function HeroSection() {
     <div className="relative h-[600px] md:h-[600px] bg-[url('https://betaviet.vn/wp-content/uploads/2025/01/backgroup3.jpg')] bg-cover bg-center">
       <div className="absolute inset-0 bg-black/50">
         <div className="container mx-auto px-4 py-10 text-white">
-          <div className="flex flex-col gap-4 max-w-2xl pt-6 pb-8 mt-20">
-            <div className="text-base">
+          <div className="flex flex-col gap-4 max-w-2xl pt-6 pb-8 mt-20 md:mt-20 mt-[13px]">
+            <div className="text-base md:text-base text-sm">
               <p className="mb-2">
                 Bạn muốn sở hữu biệt thự đẳng cấp, sang trọng, chuẩn phong thủy
                 nhưng lại gặp quá nhiều vấn đề:

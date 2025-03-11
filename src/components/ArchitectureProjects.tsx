@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import ConsultationForm from "./ConsultationForm";
 
 interface CategoryProps {
   title: string;
@@ -52,14 +53,16 @@ function ProjectCard({ image, title, code, avatar, link }: ProjectCardProps) {
           <p className="text-sm line-clamp-2">{title}</p>
           <p className="text-sm text-gray-600">{code}</p>
         </div>
-        <a href={link || "#"}>
-          <Button
-            variant="outline"
-            className="border-[#B87B44] text-[#B87B44] hover:bg-[#B87B44] hover:text-white whitespace-nowrap"
-          >
-            Đặt lịch tư vấn
-          </Button>
-        </a>
+        <ConsultationForm
+          trigger={
+            <Button
+              variant="outline"
+              className="border-[#B87B44] text-[#B87B44] hover:bg-[#B87B44] hover:text-white whitespace-nowrap"
+            >
+              Đặt lịch tư vấn
+            </Button>
+          }
+        />
       </div>
     </div>
   );
