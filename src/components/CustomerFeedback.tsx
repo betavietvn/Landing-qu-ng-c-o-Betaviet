@@ -51,21 +51,21 @@ function VideoThumbnail({ url, thumbnail }: VideoProps) {
 export default function CustomerFeedback() {
   const videos = [
     {
-      url: "https://www.youtube.com/watch?v=kYOKlA3wFmI",
-      thumbnail: "https://img.youtube.com/vi/kYOKlA3wFmI/maxresdefault.jpg",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=q6mFDn0ECBM",
-      thumbnail: "https://img.youtube.com/vi/q6mFDn0ECBM/maxresdefault.jpg",
-    },
-    {
       url: "https://www.youtube.com/watch?v=CIOecJZRbVI",
       thumbnail: "https://img.youtube.com/vi/CIOecJZRbVI/maxresdefault.jpg",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=h0Zv519m98E",
+      thumbnail: "https://img.youtube.com/vi/h0Zv519m98E/maxresdefault.jpg",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=wocsMPk8PLE",
+      thumbnail: "https://img.youtube.com/vi/wocsMPk8PLE/maxresdefault.jpg",
     },
   ];
 
   return (
-    <div className="py-16 bg-white">
+    <div className="py-16 bg-[#f8f8f8]">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-[#B87B44] mb-4">
           CẢM NHẬN KHÁCH HÀNG
