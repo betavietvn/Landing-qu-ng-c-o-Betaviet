@@ -11,11 +11,12 @@ export interface FormData {
 }
 
 // Google Sheet submission endpoint - secured with access control
+// Sử dụng URL triển khai mới
 const GOOGLE_SHEET_URL =
-  "https://script.google.com/macros/s/AKfycbyEZj07KpHi9rBcbbz7LRoLTmQ4uEQZ6JOMfrZEcRJVxMr69kJpDq2K3MhpvvTiWZrJRg/exec";
+  "https://script.google.com/macros/s/AKfycbw64cTHiv0rMzfbe8VSdtGeHOsvQnJSNFRrNvEIJP9lZgOIO7Huv_eHrXNFrWMLTta-WA/exec";
 
-// Security token for form submission - must match the token in Google Apps Script
-const SECURITY_TOKEN = "betaviet_form_2024";
+// Security token for form submission
+const SECURITY_TOKEN = "betaviet_secure_form_2024";
 
 /**
  * Submits form data to Google Sheets with security measures
@@ -46,12 +47,9 @@ export async function submitToGoogleSheet(
     const response = await fetch(GOOGLE_SHEET_URL, {
       method: "POST",
       body: formData,
-      mode: "no-cors", // Changed back to no-cors to avoid CORS issues
+      mode: "no-cors", // This is required for Google Apps Script
     });
 
-    // With no-cors mode, we can't read the response
-    // So we just assume success if no error is thrown
-    console.log("Form submitted successfully");
     return { success: true, message: "Đã gửi thông tin thành công!" };
   } catch (error) {
     console.error("Form submission error:", error);
