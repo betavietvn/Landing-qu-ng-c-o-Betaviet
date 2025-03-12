@@ -30,8 +30,14 @@ function doPost(e) {
       SpreadsheetApp.openById(spreadsheetId).getSheetByName("Form Responses") ||
       SpreadsheetApp.openById(spreadsheetId).getSheets()[0];
 
-    // Chuẩn bị dữ liệu để ghi vào sheet
-    const timestamp = data.timestamp || new Date().toISOString();
+    // Chuẩn bị dữ liệu để ghi vào sheet với múi giờ GMT+7
+    let timestamp = data.timestamp || new Date().toISOString();
+    // Nếu timestamp được tạo ở server, điều chỉnh sang GMT+7
+    if (!data.timestamp) {
+      const now = new Date();
+      const gmtPlus7 = new Date(now.getTime() + 7 * 60 * 60 * 1000);
+      timestamp = gmtPlus7.toISOString();
+    }
     const name = data.name || "";
     const phone = data.phone || "";
     const address = data.address || "";

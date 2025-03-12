@@ -33,8 +33,10 @@ export async function submitToGoogleSheet(
       if (value) formData.append(key, value);
     });
 
-    // Add timestamp
-    formData.append("timestamp", new Date().toISOString());
+    // Add timestamp with GMT+7 adjustment
+    const now = new Date();
+    const gmtPlus7 = new Date(now.getTime() + 7 * 60 * 60 * 1000);
+    formData.append("timestamp", gmtPlus7.toISOString());
 
     // Add security token
     formData.append("securityToken", SECURITY_TOKEN);
