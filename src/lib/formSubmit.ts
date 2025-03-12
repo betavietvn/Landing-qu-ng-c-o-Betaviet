@@ -12,7 +12,7 @@ export interface FormData {
 
 // Google Sheet submission endpoint - secured with access control
 const GOOGLE_SHEET_URL =
-  "https://script.google.com/macros/s/AKfycbwZr3_CLIt8_mPQn-8uVpTWNquf5orxV76NimhOgyB8UBaTiEzhX8CmGLJsMtVUUA5E/exec";
+  "https://script.google.com/macros/s/AKfycbyEZj07KpHi9rBcbbz7LRoLTmQ4uEQZ6JOMfrZEcRJVxMr69kJpDq2K3MhpvvTiWZrJRg/exec";
 
 // Security token for form submission
 const SECURITY_TOKEN = "betaviet_secure_form_2024";
