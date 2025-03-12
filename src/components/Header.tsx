@@ -6,8 +6,8 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const menuItems = [
-    { label: "TRANG CHỦ", href: "/" },
-    { label: "KHUYẾN MÃI", href: "https://betaviet.vn/vlanding-mau-1/" },
+    { label: "TRANG CHỦ", href: "https://betaviet.vn/" },
+    { label: "KHUYẾN MÃI", href: "#hero-section" },
     { label: "DỰ ÁN KIẾN TRÚC", href: "#architecture-projects" },
     { label: "DỰ ÁN NỘI THẤT", href: "#interior-projects" },
     { label: "THĂM CÔNG TRÌNH", href: "#construction-visit" },
