@@ -14,8 +14,8 @@ export interface FormData {
 const GOOGLE_SHEET_URL =
   "https://script.google.com/macros/s/AKfycbyEZj07KpHi9rBcbbz7LRoLTmQ4uEQZ6JOMfrZEcRJVxMr69kJpDq2K3MhpvvTiWZrJRg/exec";
 
-// Security token for form submission
-const SECURITY_TOKEN = "betaviet_secure_form_2024";
+// Security token for form submission - must match the token in Google Apps Script
+const SECURITY_TOKEN = "betaviet_form_2024";
 
 /**
  * Submits form data to Google Sheets with security measures
@@ -46,10 +46,30 @@ export async function submitToGoogleSheet(
     const response = await fetch(GOOGLE_SHEET_URL, {
       method: "POST",
       body: formData,
-      mode: "no-cors", // This is required for Google Apps Script
+      mode: "cors", // Changed from no-cors to cors to get proper error responses
+      headers: {
+        Accept: "application/json",
+      },
     });
 
-    return { success: true, message: "Đã gửi thông tin thành công!" };
+    // Check if response is ok
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Form submission server error:", errorText);
+      return {
+        success: false,
+        message: "Lỗi máy chủ: " + (response.status || "unknown"),
+      };
+    }
+
+    // Try to parse response
+    try {
+      const result = await response.json();
+      return result;
+    } catch (parseError) {
+      console.log("Response received but could not parse JSON");
+      return { success: true, message: "Đã gửi thông tin thành công!" };
+    }
   } catch (error) {
     console.error("Form submission error:", error);
     return {

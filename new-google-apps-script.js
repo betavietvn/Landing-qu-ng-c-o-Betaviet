@@ -1,4 +1,4 @@
-// Đây là mã Google Apps Script cần được cập nhật trong Google Apps Script Editor
+// Mã Google Apps Script mới để gắn vào Google Sheet
 
 // Add CORS headers to all responses
 function setCorsHeaders(response) {
@@ -16,19 +16,17 @@ function doPost(e) {
     // Kiểm tra token bảo mật
     const securityToken = data.securityToken;
     if (securityToken !== "betaviet_form_2024") {
-      return ContentService.createTextOutput(
+      const response = ContentService.createTextOutput(
         JSON.stringify({
           success: false,
           message: "Unauthorized access",
         }),
       ).setMimeType(ContentService.MimeType.JSON);
+      return setCorsHeaders(response);
     }
 
-    // ID của Google Sheet mới
-    const spreadsheetId = "1ikjlNw61BVD_Ump4CaTpt7opeYT9hwbmQD7p8pbNbnc";
-    const sheet =
-      SpreadsheetApp.openById(spreadsheetId).getSheetByName("Form Responses") ||
-      SpreadsheetApp.openById(spreadsheetId).getSheets()[0];
+    // Lấy sheet hiện tại
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
 
     // Chuẩn bị dữ liệu để ghi vào sheet
     const timestamp = data.timestamp || new Date().toISOString();
