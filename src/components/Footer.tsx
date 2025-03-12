@@ -104,7 +104,7 @@ export default function Footer() {
                 className="hover:text-white/80"
               >
                 <img
-                  src="https://betaviet.vn/wp-content/uploads/2023/12/icon_call.png"
+                  src="https://betaviet.vn/wp-content/uploads/2025/03/icons8-zalo-50.png"
                   alt="Zalo"
                   className="w-6 h-6 brightness-0 invert"
                 />
@@ -116,7 +116,7 @@ export default function Footer() {
                 className="hover:text-white/80"
               >
                 <img
-                  src="https://betaviet.vn/wp-content/uploads/2023/12/icon_call.png"
+                  src="https://betaviet.vn/wp-content/uploads/2025/03/whatsapp.png"
                   alt="WhatsApp"
                   className="w-6 h-6 brightness-0 invert"
                 />
@@ -128,7 +128,7 @@ export default function Footer() {
                 className="hover:text-white/80"
               >
                 <img
-                  src="/tiktok-icon.png"
+                  src="https://betaviet.vn/wp-content/uploads/2025/03/tik-tok.png"
                   alt="TikTok"
                   className="w-6 h-6 brightness-0 invert"
                 />

@@ -7,7 +7,7 @@ export default function Header() {
 
   const menuItems = [
     { label: "TRANG CHỦ", href: "https://betaviet.vn/" },
-    { label: "KHUYẾN MÃI", href: "#hero-section" },
+    { label: "KHUYẾN MÃI", href: "#" },
     { label: "DỰ ÁN KIẾN TRÚC", href: "#architecture-projects" },
     { label: "DỰ ÁN NỘI THẤT", href: "#interior-projects" },
     { label: "THĂM CÔNG TRÌNH", href: "#construction-visit" },

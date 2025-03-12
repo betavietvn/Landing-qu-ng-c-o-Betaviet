@@ -82,7 +82,7 @@ export default function RegisterSection() {
       <div className="absolute inset-0 bg-black/50 flex items-start md:items-center overflow-y-auto md:overflow-visible">
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 py-8 md:py-0">
           {/* Left Column */}
-          <div className="text-white space-y-4 lg:space-y-6">
+          <div className="text-white space-y-4 lg:space-y-6 flex flex-col justify-center h-full">
             <h2 className="text-xl md:text-3xl font-bold">
               🏡 BETAVIET – BIẾN MỌI Ý TƯỞNG THÀNH HIỆN THỰC!
             </h2>
@@ -122,7 +122,7 @@ export default function RegisterSection() {
 
           {/* Right Column - Contact Form */}
           <div className="bg-white p-6 rounded-lg">
-            <h2 className="text-2xl font-bold text-center mb-6">
+            <h2 className="text-2xl font-bold text-center mb-6 text-[#bc7025]">
               ĐĂNG KÝ
               <br />
               NHẬN ƯU ĐÃI
