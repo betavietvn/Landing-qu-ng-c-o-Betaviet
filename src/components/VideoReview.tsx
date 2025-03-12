@@ -135,7 +135,7 @@ export default function VideoReview() {
 
         <div className="flex justify-center">
           <a
-            href="https://betaviet.vn/du-an-trang-tri-noi-that/"
+            href="https://www.youtube.com/watch?v=99qc3d2TgRg"
             target="_blank"
             rel="noopener noreferrer"
           >

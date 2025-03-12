@@ -23,7 +23,7 @@ function Home() {
       {/* Hero Section with Contact Form */}
       <div className="relative">
         <HeroSection />
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 w-[400px] hidden lg:block">
+        <div className="absolute right-48 top-1/2 -translate-y-1/2 w-[500px] hidden lg:block">
           <ContactForm />
         </div>
         <div className="lg:hidden py-8 bg-[#B87B44]/10">

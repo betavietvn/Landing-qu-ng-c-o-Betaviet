@@ -98,6 +98,7 @@ export default function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
+          className="text-base"
         />
         <Input
           name="phone"
@@ -105,17 +106,19 @@ export default function ContactForm() {
           value={formData.phone}
           onChange={handleChange}
           required
+          className="text-base"
         />
         <Input
           name="address"
           placeholder="Địa chỉ"
           value={formData.address}
           onChange={handleChange}
+          className="text-base"
         />
         <Textarea
           name="message"
           placeholder="Nội dung cần tư vấn"
-          className="min-h-[120px]"
+          className="min-h-[120px] text-base"
           value={formData.message}
           onChange={handleChange}
         />
