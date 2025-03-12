@@ -266,7 +266,7 @@ export default function ArchitectureProjects() {
         <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4 mb-4">
           <div className="flex space-x-4 w-max">
             {displayProjects.map((project, index) => (
-              <div key={index} className="w-[280px] flex-shrink-0">
+              <div key={index} className="w-[339px] flex-shrink-0">
                 <ProjectCard {...project} />
               </div>
             ))}

@@ -79,10 +79,22 @@ export default function CustomerFeedback() {
           trình do Betaviet Group thiết kế và thi công.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Desktop grid */}
+        <div className="hidden md:grid grid-cols-3 gap-6">
           {videos.map((video, index) => (
             <VideoThumbnail key={index} {...video} />
           ))}
+        </div>
+
+        {/* Mobile slider */}
+        <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4 mb-4">
+          <div className="flex space-x-4 w-max">
+            {videos.map((video, index) => (
+              <div key={index} className="w-[308px] flex-shrink-0">
+                <VideoThumbnail {...video} />
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="flex justify-center mt-8">

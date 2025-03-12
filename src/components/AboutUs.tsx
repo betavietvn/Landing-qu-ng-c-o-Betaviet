@@ -8,7 +8,7 @@ export default function AboutUs() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start mb-8">
           {/* Left side - Company info */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:col-span-1 col-span-full">
             <h3 className="text-xl font-bold text-[#B87B44]">
               BETAVIET - TỔNG THẦU THIẾT KẾ THI CÔNG CHUYÊN NGHIỆP HÀNG ĐẦU VIỆT
               NAM
@@ -29,8 +29,8 @@ export default function AboutUs() {
             </p>
           </div>
 
-          {/* Center - Map */}
-          <div className="flex justify-center">
+          {/* Center - Map - Hidden on mobile */}
+          <div className="hidden lg:flex justify-center">
             <img
               src="https://betaviet.vn/wp-content/uploads/2024/11/ban-dotrang-chu.jpg"
               alt="Vietnam Map"
@@ -38,8 +38,8 @@ export default function AboutUs() {
             />
           </div>
 
-          {/* Right side - Stats */}
-          <div className="space-y-10">
+          {/* Right side - Stats - Hidden on mobile */}
+          <div className="hidden lg:block space-y-10">
             <div className="flex items-start gap-8">
               <span className="text-5xl font-bold text-[#B87B44] leading-none">
                 15+
