@@ -13,7 +13,7 @@ function CategoryCard({ title, image, link }: CategoryProps) {
       <img
         src={image}
         alt={title}
-        className="w-full aspect-[1.4/1] object-contain transition-transform duration-300 group-hover:scale-110"
+        className="w-full aspect-[1.4/1] object-cover transition-transform duration-300 group-hover:scale-110"
       />
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
         <h3 className="text-white text-lg font-bold text-center px-2">
@@ -40,7 +40,7 @@ function ProjectCard({ image, title, code, avatar, link }: ProjectCardProps) {
           <img
             src={image}
             alt={title}
-            className="w-full aspect-[1.4/1] object-contain transition-transform duration-300 group-hover:scale-110"
+            className="w-full aspect-[1.4/1] object-cover transition-transform duration-300 group-hover:scale-110"
           />
         </div>
       </a>
