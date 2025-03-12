@@ -16,7 +16,7 @@ const GOOGLE_SHEET_URL =
   "https://script.google.com/macros/s/AKfycbw64cTHiv0rMzfbe8VSdtGeHOsvQnJSNFRrNvEIJP9lZgOIO7Huv_eHrXNFrWMLTta-WA/exec";
 
 // Security token for form submission
-const SECURITY_TOKEN = "betaviet_secure_form_2024";
+const SECURITY_TOKEN = "betaviet_form_2024";
 
 /**
  * Submits form data to Google Sheets with security measures
@@ -42,6 +42,9 @@ export async function submitToGoogleSheet(
     // Add source information
     formData.append("source", window.location.hostname);
     formData.append("formType", "website_contact");
+
+    // Log data being sent
+    console.log("Sending form data:", Object.fromEntries(formData.entries()));
 
     // Submit data
     const response = await fetch(GOOGLE_SHEET_URL, {
