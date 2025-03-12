@@ -99,7 +99,7 @@ export default function CustomerFeedback() {
 
         <div className="flex justify-center mt-8">
           <a
-            href="https://betaviet.vn/thiet-ke-thi-cong-kien-truc/"
+            href="https://betaviet.vn/video-cam-nhan-cua-khach-hang/"
             target="_blank"
             rel="noopener noreferrer"
           >

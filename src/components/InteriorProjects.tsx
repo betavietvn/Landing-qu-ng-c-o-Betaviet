@@ -13,9 +13,9 @@ function CategoryCard({ title, image, link }: CategoryProps) {
       <img
         src={image}
         alt={title}
-        className="w-full h-[150px] object-cover transition-transform duration-300 group-hover:scale-110"
+        className="w-full aspect-[1.4/1] object-contain transition-transform duration-300 group-hover:scale-110"
       />
-      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
         <h3 className="text-white text-lg font-bold text-center px-2">
           {title}
         </h3>
@@ -36,33 +36,33 @@ function ProjectCard({ image, title, code, avatar, link }: ProjectCardProps) {
   return (
     <div className="space-y-2">
       <a href={link || "#"} className="block">
-        <div className="relative group">
+        <div className="relative group overflow-hidden rounded-lg">
           <img
             src={image}
             alt={title}
-            className="w-full rounded-lg aspect-[4/3] object-cover"
+            className="w-full aspect-[1.4/1] object-contain transition-transform duration-300 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xl font-bold">
-            {title}
-          </div>
         </div>
       </a>
       <div className="flex items-center gap-3">
-        <img src={avatar} alt="Avatar" className="w-12 h-12 rounded-full" />
+        <img src={avatar} alt="Avatar" className="w-20 h-20 rounded-sm" />
         <div className="flex-1">
-          <p className="text-sm line-clamp-2">{title}</p>
-          <p className="text-sm text-gray-600">{code}</p>
+          <p className="text-xs line-clamp-2">{title}</p>
+          <p className="text-xs text-gray-600">{code}</p>
+          <div className="flex justify-end mt-2">
+            <ConsultationForm
+              trigger={
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-[#B87B44] text-[#B87B44] hover:bg-[#B87B44] hover:text-white text-xs rounded-full px-4"
+                >
+                  Đặt lịch tư vấn
+                </Button>
+              }
+            />
+          </div>
         </div>
-        <ConsultationForm
-          trigger={
-            <Button
-              variant="outline"
-              className="border-[#B87B44] text-[#B87B44] hover:bg-[#B87B44] hover:text-white whitespace-nowrap"
-            >
-              Đặt lịch tư vấn
-            </Button>
-          }
-        />
       </div>
     </div>
   );
