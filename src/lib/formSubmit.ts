@@ -46,30 +46,13 @@ export async function submitToGoogleSheet(
     const response = await fetch(GOOGLE_SHEET_URL, {
       method: "POST",
       body: formData,
-      mode: "cors", // Changed from no-cors to cors to get proper error responses
-      headers: {
-        Accept: "application/json",
-      },
+      mode: "no-cors", // Changed back to no-cors to avoid CORS issues
     });
 
-    // Check if response is ok
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Form submission server error:", errorText);
-      return {
-        success: false,
-        message: "Lỗi máy chủ: " + (response.status || "unknown"),
-      };
-    }
-
-    // Try to parse response
-    try {
-      const result = await response.json();
-      return result;
-    } catch (parseError) {
-      console.log("Response received but could not parse JSON");
-      return { success: true, message: "Đã gửi thông tin thành công!" };
-    }
+    // With no-cors mode, we can't read the response
+    // So we just assume success if no error is thrown
+    console.log("Form submitted successfully");
+    return { success: true, message: "Đã gửi thông tin thành công!" };
   } catch (error) {
     console.error("Form submission error:", error);
     return {
