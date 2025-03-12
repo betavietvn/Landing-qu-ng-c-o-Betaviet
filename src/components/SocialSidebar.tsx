@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import MapDialog from "./MapDialog";
+import ContactFormDialog from "./ContactFormDialog";
 
 interface SocialLinkProps {
   href: string;
@@ -55,15 +57,27 @@ export default function SocialSidebar() {
 
   return (
     <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2">
-      <SocialLink
-        href="https://maps.app.goo.gl/GH9ieJNFm8qqykj3A"
-        icon="https://betaviet.vn/wp-content/uploads/2023/12/icon_map.png"
-        alt="Google Maps"
+      <MapDialog
+        trigger={
+          <button className="block w-12 h-12 rounded-full overflow-hidden hover:opacity-90 transition-opacity">
+            <img
+              src="https://betaviet.vn/wp-content/uploads/2023/12/icon_map.png"
+              alt="Google Maps"
+              className="w-full h-full object-cover"
+            />
+          </button>
+        }
       />
-      <SocialLink
-        href="#"
-        icon="https://betaviet.vn/wp-content/uploads/2023/12/icon_form.png"
-        alt="Contact Form"
+      <ContactFormDialog
+        trigger={
+          <button className="block w-12 h-12 rounded-full overflow-hidden hover:opacity-90 transition-opacity">
+            <img
+              src="https://betaviet.vn/wp-content/uploads/2023/12/icon_form.png"
+              alt="Contact Form"
+              className="w-full h-full object-cover"
+            />
+          </button>
+        }
       />
       <SocialLink
         href="https://m.me/521739221200526"

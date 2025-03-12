@@ -203,9 +203,6 @@ export default function WhyChooseBetaviet() {
                   <h2 className="text-2xl font-bold text-[#B87B44]">
                     Đặt lịch tư vấn
                   </h2>
-                  <DialogClose className="rounded-full p-1 hover:bg-gray-100">
-                    <X className="h-4 w-4" />
-                  </DialogClose>
                 </div>
 
                 <form className="space-y-4" onSubmit={handleSubmit}>

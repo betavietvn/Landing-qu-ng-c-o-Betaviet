@@ -49,12 +49,6 @@ function Home() {
             <h2 className="text-2xl font-bold text-[#B87B44]">
               Đăng ký tư vấn
             </h2>
-            <button
-              onClick={() => setConsultOpen(false)}
-              className="text-gray-500 hover:text-gray-700"
-            >
-              <X size={20} />
-            </button>
           </div>
           <ContactForm />
         </DialogContent>

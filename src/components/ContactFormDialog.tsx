@@ -1,14 +1,12 @@
-import { X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 import { submitToGoogleSheet } from "@/lib/formSubmit";
 
-interface ConsultationFormProps {
+interface ContactFormDialogProps {
   trigger: React.ReactNode;
 }
 
-export default function ConsultationForm({ trigger }: ConsultationFormProps) {
+export default function ContactFormDialog({ trigger }: ContactFormDialogProps) {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState({
@@ -24,7 +22,8 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
     const data = {
       name: formData.get("name") as string,
       phone: formData.get("phone") as string,
-      area: formData.get("area") as string,
+      address: formData.get("address") as string,
+      message: formData.get("message") as string,
     };
 
     if (!data.name || !data.phone) {
@@ -53,7 +52,8 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
       const result = await submitToGoogleSheet({
         name: data.name,
         phone: data.phone,
-        area: data.area,
+        address: data.address,
+        message: data.message,
       });
 
       setSubmitMessage({
@@ -83,52 +83,38 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="sm:max-w-[450px] p-0">
+      <DialogContent className="sm:max-w-[500px] p-0">
         <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-medium text-[#B87B44]">
-              Đặt lịch tư vấn
-            </h2>
-          </div>
+          <h2 className="text-xl font-medium text-[#B87B44] mb-6">
+            Đăng ký tư vấn
+          </h2>
 
           <form className="space-y-4" onSubmit={handleSubmit}>
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Họ và tên
-              </label>
-              <input
-                name="name"
-                type="text"
-                placeholder="Nhập họ và tên"
-                className="w-full p-3 border rounded-md"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Số điện thoại
-              </label>
-              <input
-                name="phone"
-                type="tel"
-                placeholder="Số điện thoại"
-                className="w-full p-3 border rounded-md"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Diện tích
-              </label>
-              <input
-                name="area"
-                type="text"
-                placeholder="Diện tích"
-                className="w-full p-3 border rounded-md"
-              />
-            </div>
+            <input
+              name="name"
+              type="text"
+              placeholder="Họ & Tên*"
+              className="w-full p-3 border rounded-md"
+              required
+            />
+            <input
+              name="phone"
+              type="tel"
+              placeholder="Số điện thoại*"
+              className="w-full p-3 border rounded-md"
+              required
+            />
+            <input
+              name="address"
+              type="text"
+              placeholder="Địa chỉ"
+              className="w-full p-3 border rounded-md"
+            />
+            <textarea
+              name="message"
+              placeholder="Nội dung cần tư vấn"
+              className="w-full p-3 border rounded-md min-h-[120px]"
+            ></textarea>
 
             {submitMessage.show && (
               <div
@@ -138,18 +124,13 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
               </div>
             )}
 
-            <div className="text-center text-sm text-gray-600 mt-2">
-              Hotline:{" "}
-              <span className="text-[#B87B44] font-medium">0915 010 800</span>
-            </div>
-
-            <Button
+            <button
               type="submit"
-              className="w-full bg-[#B87B44] hover:bg-[#A66933] text-white rounded-md"
+              className="w-full bg-[#B87B44] text-white py-3 rounded-md hover:bg-[#A66933] transition-colors font-bold"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "ĐANG GỬI..." : "Đặt lịch"}
-            </Button>
+              {isSubmitting ? "ĐANG GỬI..." : "BẤM GỬI ĐI"}
+            </button>
           </form>
         </div>
       </DialogContent>

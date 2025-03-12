@@ -1,3 +1,5 @@
+import ContactFormDialog from "./ContactFormDialog";
+
 export default function MobileContactBar() {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 lg:hidden">
@@ -50,17 +52,18 @@ export default function MobileContactBar() {
           <span className="text-xs">Messenger</span>
         </a>
 
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex flex-col items-center space-y-1"
-        >
-          <img
-            src="https://betaviet.vn/wp-content/uploads/2023/12/icon_form.png"
-            alt="Tư vấn"
-            className="w-8 h-8"
-          />
-          <span className="text-xs">Tư vấn</span>
-        </button>
+        <ContactFormDialog
+          trigger={
+            <button className="flex flex-col items-center space-y-1">
+              <img
+                src="https://betaviet.vn/wp-content/uploads/2023/12/icon_form.png"
+                alt="Tư vấn"
+                className="w-8 h-8"
+              />
+              <span className="text-xs">Tư vấn</span>
+            </button>
+          }
+        />
       </div>
     </div>
   );
