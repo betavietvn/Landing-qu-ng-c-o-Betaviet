@@ -47,8 +47,7 @@ function ProjectCard({ image, title, code, avatar, link }: ProjectCardProps) {
       <div className="flex items-center gap-3">
         <img src={avatar} alt="Avatar" className="w-20 h-20 rounded-sm" />
         <div className="flex-1">
-          <p className="text-xs line-clamp-2">{title}</p>
-          <p className="text-xs text-gray-600">{code}</p>
+          <p className="text-[13px] line-clamp-2">{title}</p>
           <div className="flex justify-end mt-2">
             <ConsultationForm
               trigger={

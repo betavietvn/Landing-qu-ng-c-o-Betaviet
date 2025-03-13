@@ -156,12 +156,6 @@ export default function ConstructionVisit() {
           THĂM CÔNG TRÌNH
         </h2>
 
-        <p className="text-center mb-8 max-w-3xl mx-auto">
-          10 phong cách thiết kế thịnh hành. Hàng chục nghìn công trình chất
-          lượng cao. Đánh giá sâu sắc từ kiến trúc sư. Giúp bạn có được nguồn
-          cảm hứng thiết kế ngôi nhà một cách nhanh chóng!
-        </p>
-
         {/* Desktop grid */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
           {constructionProjects.map((project) => (
@@ -243,7 +237,7 @@ export default function ConstructionVisit() {
               <a
                 key={project.id}
                 href={project.link}
-                className="bg-white rounded-lg overflow-hidden shadow-lg block w-[280px] flex-shrink-0"
+                className="bg-white rounded-lg overflow-hidden shadow-lg block w-[339px] flex-shrink-0"
               >
                 <div className="relative">
                   <img

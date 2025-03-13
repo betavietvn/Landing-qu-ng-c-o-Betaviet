@@ -90,7 +90,7 @@ export default function CustomerFeedback() {
         <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4 mb-4">
           <div className="flex space-x-4 w-max">
             {videos.map((video, index) => (
-              <div key={index} className="w-[308px] flex-shrink-0">
+              <div key={index} className="w-[370px] flex-shrink-0">
                 <VideoThumbnail {...video} />
               </div>
             ))}

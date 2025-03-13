@@ -116,16 +116,16 @@ export default function VideoReview() {
           </div>
         </div>
 
-        {/* Mobile layout */}
+        {/* Mobile layout - Increased size by 20% */}
         <div className="md:hidden mb-6">
           {/* Horizontal scrollable videos including main video */}
           <div className="overflow-x-auto pb-4 -mx-4 px-4">
             <div className="flex space-x-4 w-max">
-              <div className="w-[280px] flex-shrink-0">
+              <div className="w-[336px] flex-shrink-0">
                 <VideoThumbnail {...mainVideo} />
               </div>
               {videos.map((video, index) => (
-                <div key={index} className="w-[280px] flex-shrink-0">
+                <div key={index} className="w-[336px] flex-shrink-0">
                   <VideoThumbnail {...video} />
                 </div>
               ))}
