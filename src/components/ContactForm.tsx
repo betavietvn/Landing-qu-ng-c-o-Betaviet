@@ -49,7 +49,7 @@ export default function ContactForm() {
       setSubmitMessage({
         show: true,
         success: false,
-        text: "Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số bắt đầu bằng số 0 hoặc +84",
+        text: "Số điện thoại không hợp lệ. Vui lòng nhập lại!",
       });
       return;
     }
