@@ -9,6 +9,13 @@ export default function RegisterSection() {
     text: "",
   });
 
+  // Validate Vietnamese phone number
+  const isValidVietnamesePhone = (phone: string) => {
+    // Check if starts with +84 followed by 9 digits, or 0 followed by 9 digits
+    const regex = /^(\+84\d{9}|0\d{9})$/;
+    return regex.test(phone);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.currentTarget as HTMLFormElement;
@@ -25,6 +32,15 @@ export default function RegisterSection() {
         show: true,
         success: false,
         text: "Vui lòng điền đầy đủ họ tên và số điện thoại",
+      });
+      return;
+    }
+
+    if (!isValidVietnamesePhone(data.phone)) {
+      setSubmitMessage({
+        show: true,
+        success: false,
+        text: "Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số bắt đầu bằng số 0 hoặc +84",
       });
       return;
     }
