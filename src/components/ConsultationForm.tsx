@@ -19,9 +19,22 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
 
   // Validate Vietnamese phone number
   const isValidVietnamesePhone = (phone: string) => {
-    // Check if starts with +84 followed by 9 digits, or 0 followed by 9 digits
-    const regex = /^(\+84\d{9}|0\d{9})$/;
-    return regex.test(phone);
+    // Check if starts with +84 followed by 9 digits
+    if (phone.startsWith("+84") && /^\+84\d{9}$/.test(phone)) {
+      return true;
+    }
+
+    // Check if starts with 0 followed by 9 digits
+    if (phone.startsWith("0") && /^0\d{9}$/.test(phone)) {
+      // Check if the second digit is 0,1,2,3,4,5
+      const secondDigit = phone.charAt(1);
+      if (["0", "1", "2", "3", "4", "5"].includes(secondDigit)) {
+        return false;
+      }
+      return true;
+    }
+
+    return false;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
