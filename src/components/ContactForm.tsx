@@ -48,6 +48,23 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Get honeypot field value
+    const form = e.currentTarget as HTMLFormElement;
+    const honeypotField = form.querySelector(
+      '[name="email_confirm"]',
+    ) as HTMLInputElement;
+
+    // Honeypot check - if this field is filled, it's likely a bot
+    if (honeypotField && honeypotField.value) {
+      console.log("Honeypot triggered - likely bot submission");
+      setSubmitMessage({
+        show: true,
+        success: true, // Show success to the bot but don't actually submit
+        text: "Đã gửi thông tin thành công!",
+      });
+      return;
+    }
+
     // Validate form
     if (!formData.name || !formData.phone) {
       setSubmitMessage({
@@ -151,6 +168,20 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
         />
+
+        {/* Honeypot field - hidden from humans but visible to bots */}
+        <div
+          className="absolute opacity-0 -left-[9999px] -top-[9999px] pointer-events-none"
+          aria-hidden="true"
+        >
+          <Input
+            name="email_confirm"
+            placeholder="Confirm Email"
+            tabIndex={-1}
+            autoComplete="off"
+            className="text-base"
+          />
+        </div>
 
         {submitMessage.show && (
           <div

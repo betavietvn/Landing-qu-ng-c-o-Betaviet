@@ -41,6 +41,19 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
     e.preventDefault();
     const form = e.currentTarget as HTMLFormElement;
     const formData = new FormData(form);
+
+    // Honeypot check - if this field is filled, it's likely a bot
+    const honeypot = formData.get("website") as string;
+    if (honeypot) {
+      console.log("Honeypot triggered - likely bot submission");
+      setSubmitMessage({
+        show: true,
+        success: true, // Show success to the bot but don't actually submit
+        text: "Đã gửi thông tin thành công!",
+      });
+      return;
+    }
+
     const data = {
       name: formData.get("name") as string,
       phone: formData.get("phone") as string,
@@ -155,6 +168,21 @@ export default function ConsultationForm({ trigger }: ConsultationFormProps) {
                 name="area"
                 type="text"
                 placeholder="Diện tích"
+                className="w-full p-3 border rounded-md"
+              />
+            </div>
+
+            {/* Honeypot field - hidden from humans but visible to bots */}
+            <div
+              className="absolute opacity-0 -left-[9999px] -top-[9999px] pointer-events-none"
+              aria-hidden="true"
+            >
+              <label className="block text-sm font-medium mb-1">Website</label>
+              <input
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
                 className="w-full p-3 border rounded-md"
               />
             </div>
